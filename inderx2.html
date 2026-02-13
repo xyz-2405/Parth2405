@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Jaanya ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+}
+
+/* Floating background hearts */
+.bg-heart {
+  position: fixed;
+  bottom: -50px;
+  font-size: 20px;
+  color: rgba(255, 0, 100, 0.4);
+  animation: floatBg 8s linear infinite;
+}
+
+@keyframes floatBg {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+section {
+  display: none;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.active {
+  display: block;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+.no {
+  background: white;
+  position: relative;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+img {
+  width: 150px;
+  border-radius: 20px;
+  margin: 8px;
+  transition: 0.3s;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.heart {
+  position: fixed;
+  bottom: 0;
+  font-size: 22px;
+  animation: floatUp 2s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-500px);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section id="page1" class="active">
+  <h1>Hey Jaanya ❤️</h1>
+  <p>I made something special just for you, Jaanya...</p>
+  <button id="startBtn">Click Here 👀</button>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2">
+  <h1>Jaanya, Will You Be My Valentine? 💖</h1>
+  <button class="yes" id="yesBtn">YES 💕</button>
+  <button class="no" id="noBtn">NO 😜</button>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3">
+  <h1>Our Beautiful Memories, Jaanya 💞</h1>
+
+  <img src="images/pic1.jpg">
+  <img src="images/pic2.jpg">
+  <img src="images/pic3.jpg">
+  <img src="images/pic4.jpg">
+  <img src="images/pic5.jpg">
+
+  <p>Every picture with you, Jaanya, holds a special place in my heart. 💘</p>
+
+  <br><br>
+  <button id="continueBtn">Continue ❤️</button>
+</section>
+
+<!-- PAGE 4 -->
+<section id="page4">
+  <h1>Thank You Jaanya ❤️</h1>
+
+  <p style="max-width:600px; margin:auto; font-size:18px; line-height:1.6;">
+    Jaanya, from the moment you came into my life, everything started feeling brighter and more beautiful.
+    Your smile makes my difficult days easier, and your presence makes ordinary moments magical.
+    I truly cherish every memory we share and every laugh we have together.
+    I don’t know what the future holds, but I know I want you in it.
+    It would be my best memory of my life if you would accept my proposal..Aisa nhi hai ki tum nhi manogi aur main try krna chodh dunga kyuki i love you yrr, Soo.. will you be my valentine JoJo......?😹💍💖
+  </p>
+
+  <br>
+  <button id="restartBtn">Start Again 💞</button>
+</section>
+<audio id="bgMusic" loop>
+  <source src="music/romantic.mp3" type="audio/mpeg">
+</audio> 
+
+<script>
+window.onload = function() {
+
+  var page1 = document.getElementById("page1");
+  var page2 = document.getElementById("page2");
+  var page3 = document.getElementById("page3");
+  var page4 = document.getElementById("page4");
+  
+  document.getElementById("startBtn").onclick = function() {
+  page1.classList.remove("active");
+  page2.classList.add("active");
+
+  var music = document.getElementById("bgMusic");
+  music.play();
+};
+
+  document.getElementById("yesBtn").onclick = function() {
+    page2.classList.remove("active");
+    page3.classList.add("active");
+    heartBurst();
+  };
+
+  document.getElementById("continueBtn").onclick = function() {
+    page3.classList.remove("active");
+    page4.classList.add("active");
+  };
+
+  document.getElementById("restartBtn").onclick = function() {
+    page4.classList.remove("active");
+    page1.classList.add("active");
+  };
+
+  var noBtn = document.getElementById("noBtn");
+
+  noBtn.onmouseover = function() {
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  };
+
+  startFloatingHearts();
+};
+
+function heartBurst() {
+  for (var i = 0; i < 30; i++) {
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️ Jaanya";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(function(h) {
+      h.remove();
+    }, 2000, heart);
+  }
+}
+
+function startFloatingHearts() {
+  setInterval(function() {
+    var heart = document.createElement("div");
+    heart.className = "bg-heart";
+    heart.innerHTML = "❤️ Jaanya";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+      heart.remove();
+    }, 8000);
+  }, 800);
+}
+</script>
+
+</body>
+</html>
